@@ -126,7 +126,7 @@ impl LRCParser {
           }
      }
 
-     pub fn parse<'lines>(&mut self) {
+     pub fn parse(&mut self) {
           let lines = self.text.split("\n").collect::<Vec<&str>>();
           let lyric_regex = Regex::new(&self.lyric_regex).unwrap();
           let tag_regex = Regex::new(&self.tag_regex).unwrap();
@@ -137,7 +137,7 @@ impl LRCParser {
                     continue;
                }
 
-               if let Some(_caps) = lyric_regex.captures(line){
+               if lyric_regex.is_match(line){
                     self.lyrics_lines_count += 1;
                }
                else if let Some(caps) = tag_regex.captures(line){

@@ -1,6 +1,6 @@
 pub mod lrcparser;
 
-use std::{env, fs, io::Read};
+use std::{io::Read, env, fs};
 
 fn main() {
     let args: Vec<String> = env::args().collect(); 
