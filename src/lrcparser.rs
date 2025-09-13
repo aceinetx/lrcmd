@@ -136,6 +136,7 @@ impl LRCParser {
                if line.starts_with('#') || line.starts_with(';') { // comment
                     continue;
                }
+               if line.is_empty() { continue; }
 
                if lyric_regex.is_match(line){
                     self.lyrics_lines_count += 1;
