@@ -14,16 +14,9 @@ fn main() {
         Ok(mut file) => {
             let mut text = String::new();
             if let Err(error) = file.read_to_string(&mut text) {
-                println!("{}", error);
+                println!("Read error: {}", error);
                 return;
             }
-
-            /* 
-            let re = Regex::new("").unwrap();
-            let caps = re.captures("[10:11.12]Hi!").unwrap();
-            for i in 1..caps.len(){
-                println!("{}", caps.get(i).unwrap().as_str());
-            }*/
 
             let mut parser = lrcparser::LRCParser::new(text);
             parser.parse();
@@ -39,7 +32,7 @@ fn main() {
             println!("lyrics lines: {}", parser.get_lyrics_lines_count());
         },
         Err(error) => {
-            println!("{}", error);
+            println!("Can't open file: {}", error);
         }
     }
 }
